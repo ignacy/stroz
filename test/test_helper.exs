@@ -5,6 +5,12 @@ defmodule Stroz.Case do
   alias Ecto.Adapters.SQL
   alias Stroz.Repo
 
+  setup do
+    on_exit fn ->
+      SQL.rollback_test_transaction(Repo)
+    end
+  end
+
   using do
     quote do
       alias Stroz.Repo

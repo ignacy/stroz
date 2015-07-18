@@ -13,4 +13,11 @@ defmodule Stroz.EventControllerTest do
     assert response.status == 200
     assert response.resp_body == events_as_json
   end
+
+  test "/create creates new event" do
+    response = conn(:post, "/api/events",
+                    %{ event: %{ message: "hgej" }}) |> send_request
+
+    assert response.status == 200
+  end
 end

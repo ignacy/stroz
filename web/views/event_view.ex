@@ -4,4 +4,8 @@ defmodule Stroz.EventView do
   def render("index.json", %{events: events}) do
     events
   end
+
+  def render("create.json", %{event: event}) do
+    event
+  end
 end

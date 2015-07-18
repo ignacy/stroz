@@ -8,4 +8,7 @@ defmodule Stroz.Event do
 
     timestamps
   end
+
+  @required_fields ~w(type message details)
+  @optional_fields ~w()
 end
