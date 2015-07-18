@@ -3,7 +3,7 @@ defmodule Stroz.Repo.Migrations.CreateEvents do
 
   def change do
     create table(:events) do
-      add :type
+      add :event_type
       add :message
       add :details
       timestamps

@@ -6,9 +6,8 @@ defmodule Stroz.Case do
   alias Stroz.Repo
 
   setup do
-    on_exit fn ->
-      SQL.rollback_test_transaction(Repo)
-    end
+    SQL.restart_test_transaction(Repo)
+    :ok
   end
 
   using do
@@ -28,6 +27,7 @@ defmodule Stroz.Case do
   end
 
 end
+
 
 # Create the database, run migrations, and start the test transaction.
 Mix.Task.run "ecto.create", ["--quiet"]

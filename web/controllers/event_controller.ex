@@ -10,14 +10,12 @@ defmodule Stroz.EventController do
   end
 
   def create(conn, %{"event" => event_params}) do
-    event = %Event{
-      type: event_params["type"],
-      message: event_params["message"],
-      details: event_params["details"]
-    }
-
-    Repo.insert!(event)
-
-    render conn, event: event
+    event = Event.changeset(%Event{}, event_params)
+    if event.valid? do
+      Repo.insert!(event)
+      render conn, event: event
+    else
+      render conn, event: event
+    end
   end
 end

@@ -3,7 +3,7 @@ defmodule Stroz.EventControllerTest do
 
   test "/index returns a list of contacts" do
     events_as_json =
-      %Event{ type: "error", message: "Something went wrong", details: "Some info" }
+      %Event{ event_type: "error", message: "Something went wrong", details: "Some info" }
     |> Repo.insert!
     |> List.wrap
     |> Poison.encode!
