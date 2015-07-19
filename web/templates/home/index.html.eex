@@ -1,0 +1,16 @@
+<h4>Listing all events</h4>
+
+<%= for event <- @events do %>
+  <div class="row">
+
+    <div class="col-xs-6 col-md-4">
+      <div class='event-box'>
+        <div class='title'><%= event.event_type %></div>
+        <div class='manufacturer'><%= event.message %></div>
+        <div class='description'><%= event.details %></div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <hr/>
+<% end %>
