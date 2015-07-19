@@ -15,7 +15,6 @@ defmodule Stroz.Router do
   scope "/", Stroz do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
   end
 
 
