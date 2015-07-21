@@ -13,7 +13,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :stroz, Stroz.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 400],
+  url: [host: "example.com", port: 4000],
   cache_static_manifest: "priv/static/manifest.json"
 
 # ## SSL Support
