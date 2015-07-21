@@ -2,10 +2,12 @@ require 'capistrano/ext/multistage'
 
 set :stages, ["staging", "production"]
 set :default_stage, "production"
-
+set :ssh_options, { forward_agent: true }
 set :keep_releases, 5
+set :repository_cache, "git_cache"
+set :deploy_via, :remote_cache
 set :application, "Stroz"
-set :repository,  "git@github.com:ignacy/stroz.git"
+set :repository,  "https://github.com/ignacy/stroz.git"
 set :scm, :git
 set :branch, :master
 set :use_sudo, false
