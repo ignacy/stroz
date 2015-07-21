@@ -14,7 +14,7 @@ set :use_sudo, false
 
 set :normalize_asset_timestamps, false
 set :deploy_via, :remote_cache
-set :linked_files, %w{config/prod.secret.exs}
+
 after "deploy:update", "deploy:cleanup"
 
 after "deploy:update", "deploy:build", "deploy:cleanup"
@@ -42,6 +42,7 @@ namespace :deploy do
   end
 
   task :build, roles: :web do
+    run "ln -s #{shared_path}/config/prod.secret.exs #{current_path}/config/prod.secret.exs"
     run "cd #{current_path} && mix deps.get && MIX_ENV=#{mix_env} mix release"
   end
 
