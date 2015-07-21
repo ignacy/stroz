@@ -14,6 +14,7 @@ set :use_sudo, false
 
 set :normalize_asset_timestamps, false
 set :deploy_via, :remote_cache
+set :linked_files, %w{config/prod.secret.exs}
 after "deploy:update", "deploy:cleanup"
 
 after "deploy:update", "deploy:build", "deploy:cleanup"
