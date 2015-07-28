@@ -43,7 +43,7 @@ namespace :deploy do
 
   task :build, roles: :web do
     run "ln -s #{shared_path}/config/prod.secret.exs #{current_path}/config/prod.secret.exs"
-    run "cd #{current_path} && mix deps.get && MIX_ENV=#{mix_env} mix phoenix.digest && MIX_ENV=#{mix_env} mix release"
+    run "cd #{current_path} && mix deps.get && MIX_ENV=#{mix_env} mix release"
   end
 
   task :restart, roles: :web do
