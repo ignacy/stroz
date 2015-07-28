@@ -3,7 +3,8 @@ defmodule Stroz.HomeController do
   alias Stroz.Event
 
   def index(conn, _params) do
-    events = Repo.all(Event)
+    query = from e in Event, order_by: [desc: e.inserted_at]
+    events = Repo.all(query)
     render conn, "index.html", events: events
   end
 end

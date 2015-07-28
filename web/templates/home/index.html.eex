@@ -1,7 +1,7 @@
 <h4>Listing all events</h4>
 
 <div class="row">
-  <table class="table">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Event type</th>
@@ -15,7 +15,7 @@
         <tr>
           <td><%= event.event_type %></td>
           <td><%= event.message %></td>
-          <td><%= event.details %></td>
+          <td> <%=  link String.slice(event.details, 1..60) <> " [ ... ]", to: event_path(@conn, :show, event) %></td>
           <td><%= event.inserted_at %></td>
         </tr>
       <% end %>

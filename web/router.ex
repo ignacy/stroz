@@ -16,6 +16,7 @@ defmodule Stroz.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", HomeController, :index
+    get "/event/:id", EventController, :show
   end
 
 

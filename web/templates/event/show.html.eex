@@ -1,0 +1,6 @@
+<br/>
+<h1>Event details: <%=  @event.message %></h1>
+<hr/>
+<%=  @event.inserted_at %>
+<hr/>
+<%=  @event.details %>
