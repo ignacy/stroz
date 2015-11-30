@@ -13,25 +13,18 @@ use Mix.Config
 # which you typically run after static files are built
 
 config :stroz, Stroz.Endpoint,
-  http: [port: 4000],
-  url: [host: "example.com"],
+  http: [port: {:system, "PORT"}],
+  url: [scheme: "https", host: "intense-earth-1743.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/manifest.json",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   server: true
 
-# ## SSL Support
-#
-# To get SSL working, you will need to add the `https` key
-# to the previous section, and set your `:url` port to 443
-#
-#  config :stroz, Stroz.Endpoint,
-#    ...
-#    url: [host: "example.com", port: 443],
-#    https: [port: 443,
-#            keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
-#            certfile: System.get_env("SOME_APP_SSL_CERT_PATH")]
-#
-# Where those two env variables point to a file on
-# disk for the key and cert.
+config :stroz, Stroz.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("DATABASE_URL"),
+  size: 20 # The amount of database connections in the pool
+
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -48,7 +41,3 @@ config :logger, level: :info
 #
 #     config :stroz, Stroz.Endpoint, server: true
 #
-
-# Finally import the config/prod.secret.exs
-# which should be versioned separately.
-import_config "prod.secret.exs"
